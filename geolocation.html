@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>GPS position</title>
+</head>
+<body>
+    <script src="moh.js"></script>
+    <form>
+        Latitude:
+        <input type="text" id="lat"><br>
+        Longitude:
+        <input type="text" id="lon"><br>
+        Moh:
+        <input type="text" id="moh"><br>
+    </form>
+
+    <script>
+        function showPosition(position) {
+            document.getElementById("lat").value = position.coords.latitude;
+            document.getElementById("lon").value = position.coords.longitude;
+            hentMOHFraKartverket(position.coords.latitude, position.coords.longitude, function (moh) {
+                document.getElementById("moh").value = moh;
+            });
+        }
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+            
+        }
+        else {
+            alert("Geolocation is not supported by this browser.");
+        }
+        
+    </script>
+</body>
+</html>
