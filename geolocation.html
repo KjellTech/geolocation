@@ -1,27 +1,45 @@
 ﻿<!DOCTYPE html>
 
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8" />
     <title>GPS position</title>
+    <style>
+       html { 
+        background: url(besseggen.jpg) no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+    </style>
 </head>
 <body>
+    
+
     <script src="moh.js"></script>
     <form>
-        Latitude:
+        Latitude:<br />
         <input type="text" id="lat"><br>
-        Longitude:
+        Longitude:<br />
         <input type="text" id="lon"><br>
         Moh:
-        <input type="text" id="moh"><br>
+        <br />
+        <input type="text" id="moh"><br />
+       
     </form>
+
+  
+
+    
 
     <script>
         function showPosition(position) {
-            document.getElementById("lat").value = position.coords.latitude;
-            document.getElementById("lon").value = position.coords.longitude;
+            document.getElementById("lat").value = position.coords.latitude.toPrecision(6);
+            document.getElementById("lon").value = position.coords.longitude.toPrecision(6);
             hentMOHFraKartverket(position.coords.latitude, position.coords.longitude, function (moh) {
-                document.getElementById("moh").value = moh;
+                document.getElementById("moh").value = Number(moh).toPrecision(2);
             });
         }
         if (navigator.geolocation) {
