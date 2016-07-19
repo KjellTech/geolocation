@@ -2,7 +2,7 @@
     Gets Meters Above Sea Level from Statens kartverk web server
 */
 function hentMOHFraKartverket(lat, lon, callback) {
-    var url = "http://openwps.statkart.no/skwms1/wps.elevation?request=Execute&service=WPS&version=1.0.0&identifier=elevation&datainputs=%5blat=" + lat + ";lon=" + lon + ";epsg=4326%5d";
+    var url = "https://openwps.statkart.no/skwms1/wps.elevation?request=Execute&service=WPS&version=1.0.0&identifier=elevation&datainputs=%5blat=" + lat + ";lon=" + lon + ";epsg=4326%5d";
     var xhr = new XMLHttpRequest();
     xhr.open('GET', url, true);
     xhr.onload = function () {
